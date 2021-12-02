@@ -13,7 +13,7 @@ const fs = require('fs');
 let content;
 const URL = process.argv[2];
 const filePath = process.argv[3];
-const readline = require('readline');
+// const readline = require('readline');
 
 
 
@@ -22,18 +22,18 @@ content = request(URL, { json: true }, (err, res, body) => {
     return console.log(err);
   }
   console.log(URL);
-  return body;
   // console.log(body.url);
   // console.log(body.explanation);
-});
-console.log(JSON.stringify(content));
-
-fs.writeFile(filePath, JSON.stringify(content), err => {
-  if (err) {
-    console.error(err);
-    return;
-  }
-
-  console.log(filePath);
-  console.log("file written successfully");
+  
+  fs.writeFile(filePath, JSON.stringify(content), err => {
+    if (err) {
+      console.error(err);
+      return;
+    }
+    // console.log(filePath);
+    console.log("file written successfully");
+    // return body;
+    
+  });
+  // console.log(JSON.stringify(content));
 });
